@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MapLibre Example</title>
+    <script src='https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.js'></script>
+    <link href='https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.css' rel='stylesheet' />
+        <style>
+        /* Optional: Add custom CSS styles here */
+        #map {
+            height: 100vh;
+            width: 100%;
+        }
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        const map = new maplibregl.Map({
+            container: 'map',
+            style: 'https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL',
+            center: [-117.1611, 32.7157], // Initial map center, first Number is Longititude (East-West), second is Latitude (North-South).
+            zoom: 10 // Initial map zoom level
+        });
+
+        map.on('load', () => {
+            map.addSource('roads', {
+                type: 'geojson',
+                data: 'demo.geojson',  
+            });
+
+            map.addLayer({
+                'id': 'lines',
+                'type': 'line',
+                'source': 'roads',
+                'paint': {
+                    'line-width': 2,
+                    'line-color': 'red',
+                },
+                
+            });
+            
+        
+
+        });
+
+    </script>
+</body>
+</html>
+
+"rd20full"
+
+// import the cities.geojson file
+
+// using the imported data, makye a layer that puts dots on the map
+
+
+    // make a scale for the radius, with 8 million population = 30 points, 4 million = 10 points, 0 = 0 points
+    // make the dots blue
+    // give each dot an opacity of 90%
+    // for each dot, give a stoke of 2 and stroke of black
+
+<!-- 'layout': {
+                    'text-field': ['get', 'rd20full'], // Use a get expression to set the text-field to a feature property value.
+                    'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
+                    'text-offset': [0, 1.25],
+                    'text-anchor': 'top'
+                } -->
+    
